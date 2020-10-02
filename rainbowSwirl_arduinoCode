@@ -1,26 +1,13 @@
-// Utilizes a Trinket M0 with a RGB LED, potentiometer and the on-board dotstar. For best results use a linear pot.
-
-#include <Adafruit_DotStar.h>
-
-#define NUMPIXELS 1 
-
-//internal dotstar pins on the trinket m0
-#define DATAPIN    7
-#define CLOCKPIN   8
-
-Adafruit_DotStar px(NUMPIXELS, DATAPIN, CLOCKPIN, DOTSTAR_BRG);
+// Utilizes a standard common cathode RGB LED 
 
 const int pwmMin = 0;
 const int pwmMax = 255;
 
-int r = 0; //pins for rgb led on trinket m0
+int r = 0; //pins for rgb led on Seeeduino Xiao
 int g = 2;
 int b = 3;
 
 void setup() {
-  px.begin();
-  px.show();  // dotstar initialization
-
   pinMode(r, OUTPUT);
   pinMode(g, OUTPUT);
   pinMode(b, OUTPUT);
@@ -40,43 +27,31 @@ void loop() {
 
   switch (rgbRange) {
     case 0:    
-      px.setPixelColor(0, gUp, 255, 0); //dotstar mimics rgb led
-      px.show();
       analogWrite(g, gUp);
       digitalWrite(r, HIGH); //for full low &/or high just using digitalWrite rather than storing analog value
       digitalWrite(b, LOW);
       break;
     case 1:    
-      px.setPixelColor(0, 255, rDown, 0);
-      px.show();
       analogWrite(r, rDown);
       digitalWrite(g, HIGH);
       digitalWrite(b, LOW);
       break;
     case 2:    
-      px.setPixelColor(0, 255, 0, bUp);
-      px.show();
       analogWrite(b, bUp);
       digitalWrite(g, HIGH);
       digitalWrite(r, LOW);
       break;
     case 3:    
-      px.setPixelColor(0, gDown, 0, 255);
-      px.show();
       analogWrite(g, gDown);
       digitalWrite(b, HIGH);
       digitalWrite(r, LOW);
       break;
     case 4:
-      px.setPixelColor(0, 0, rUp, 255);
-      px.show();
       analogWrite(r, rUp);
       digitalWrite(b, HIGH);
       digitalWrite(g, LOW);
       break;
     case 5:
-      px.setPixelColor(0, 0, 255, bDown);
-      px.show();
       analogWrite(b, bDown);
       digitalWrite(r, HIGH);
       digitalWrite(g, LOW);
