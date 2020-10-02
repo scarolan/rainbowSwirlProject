@@ -3,7 +3,7 @@
 const int pwmMin = 0;
 const int pwmMax = 255;
 
-int r = 0; //pins for rgb led on Seeeduino Xiao
+int r = 1; //pins for rgb led on Seeeduino Xiao
 int g = 2;
 int b = 3;
 
