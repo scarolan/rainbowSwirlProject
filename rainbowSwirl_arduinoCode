@@ -27,37 +27,44 @@ void loop() {
   int bDown = map(range, 214, 255, pwmMax, pwmMin); //5 - blue value full range fall mapped to 214-255 on pot
 
   switch (rgbRange) {
-    case 0:    
+    case 0:
+      Serial.println("Red with Green Up");
       analogWrite(g, gUp);
       digitalWrite(r, HIGH); //for full low &/or high just using digitalWrite rather than storing analog value
       digitalWrite(b, LOW);
       break;
-    case 1:    
+    case 1:
+      Serial.println("Green with Red Down");
       analogWrite(r, rDown);
       digitalWrite(g, HIGH);
       digitalWrite(b, LOW);
       break;
     case 2:    
+      Serial.println("Green with Blue Up");
       analogWrite(b, bUp);
       digitalWrite(g, HIGH);
       digitalWrite(r, LOW);
       break;
     case 3:    
+      Serial.println("Blue with Green Down");
       analogWrite(g, gDown);
       digitalWrite(b, HIGH);
       digitalWrite(r, LOW);
       break;
     case 4:
+      Serial.println("Blue with Red Up");
       analogWrite(r, rUp);
       digitalWrite(b, HIGH);
       digitalWrite(g, LOW);
       break;
     case 5:
+      Serial.println("Red with Blue Down");
       analogWrite(b, bDown);
       digitalWrite(r, HIGH);
       digitalWrite(g, LOW);
       break;
     case 6:
+      Serial.println("All Up");
       digitalWrite(r, HIGH);
       digitalWrite(g, HIGH);
       digitalWrite(b, HIGH);
